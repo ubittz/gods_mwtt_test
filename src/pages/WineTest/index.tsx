@@ -69,6 +69,8 @@ const WineTest = () => {
   const handleBack = () => {
     if (!isFirstQuestion) {
       setCurrentStep(currentStep - 1);
+    } else {
+      navigate(-1);
     }
   };
 
@@ -102,7 +104,7 @@ const WineTest = () => {
 
   return (
     <StyledWineTest>
-      <Header className='header' onBack={isFirstQuestion ? undefined : handleBack}>
+      <Header className='header' onBack={handleBack}>
         <Typography.Subtitle1>
           {currentStep}/{initialWineTest.length}
         </Typography.Subtitle1>

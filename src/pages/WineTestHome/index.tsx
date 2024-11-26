@@ -56,7 +56,7 @@ const WineTestHome = () => {
 
   return (
     <StyledWineTestHome>
-      <Header>
+      <Header hiddenBack>
         <Typography.Subtitle1>MWTT 테스트</Typography.Subtitle1>
       </Header>
       <Flex.Vertical className='body'>

@@ -1,4 +1,4 @@
-export type TestResultData = {
+export type TestResultDataType = {
   testResultId: string;
   testResultName: string;
   testResultType: string;
