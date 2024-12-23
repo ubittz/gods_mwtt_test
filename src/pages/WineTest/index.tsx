@@ -119,7 +119,7 @@ const WineTest = () => {
           <QuestionContainer
             currentStep={currentStep}
             currentQuestion={currentQuestion}
-            isLastQuestion={isLastQuestion}
+            isFirstQuestion={isFirstQuestion}
             mbti={mbti}
             selectedAnswerName={selectedAnswerName}
             onMbtiChange={setMbti}
@@ -129,8 +129,8 @@ const WineTest = () => {
       </Flex.Vertical>
 
       <FixedBottomButton>
-        <FullWidthButton onClick={handleNext} disabled={isLastQuestion ? !mbti || mbti.length !== 4 : !selectedAnswerName[currentStep - 1]}>
-          {currentStep < initialWineTest.length ? '다음' : '완료'}
+        <FullWidthButton onClick={handleNext} disabled={isFirstQuestion ? !mbti || mbti.length !== 4 : !selectedAnswerName[currentStep - 1]}>
+          {!isLastQuestion ? '다음' : '완료'}
         </FullWidthButton>
       </FixedBottomButton>
     </StyledWineTest>

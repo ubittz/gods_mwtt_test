@@ -2,12 +2,8 @@ export const initialWineTest = [
   {
     stepId: 'step_1',
     stepNumber: 1,
-    stepQuestion: '선호하는 음식류는 무엇인가요?',
-    stepAnswerList: [
-      { answerName: '육고기', answerValue: 'H', isChecked: false },
-      { answerName: '생선', answerValue: 'M', isChecked: false },
-      { answerName: '채소', answerValue: 'L', isChecked: false },
-    ],
+    stepQuestion: '본인의 MBTI를 입력해 주세요.',
+    stepAnswerList: [],
   },
   {
     stepId: 'step_2',
@@ -94,7 +90,11 @@ export const initialWineTest = [
   {
     stepId: 'step_8',
     stepNumber: 8,
-    stepQuestion: '본인의 MBTI를 입력해 주세요.',
-    stepAnswerList: [],
+    stepQuestion: '선호하는 음식류는 무엇인가요?',
+    stepAnswerList: [
+      { answerName: '육고기', answerValue: 'H', isChecked: false },
+      { answerName: '생선', answerValue: 'M', isChecked: false },
+      { answerName: '채소', answerValue: 'L', isChecked: false },
+    ],
   },
 ];

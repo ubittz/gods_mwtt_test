@@ -48,7 +48,7 @@ interface QuestionContainerProps {
     stepQuestion: string;
     stepAnswerList: StepAnswerType[];
   };
-  isLastQuestion: boolean;
+  isFirstQuestion: boolean;
   mbti: string;
   selectedAnswerName: string[];
   onMbtiChange: (value: string) => void;
@@ -58,7 +58,7 @@ interface QuestionContainerProps {
 const QuestionSection = ({
   currentStep,
   currentQuestion,
-  isLastQuestion,
+  isFirstQuestion,
   mbti,
   selectedAnswerName,
   onMbtiChange,
@@ -70,7 +70,7 @@ const QuestionSection = ({
         Q{currentStep}.<br />
         {currentQuestion.stepQuestion}
       </Typography.Headline2>
-      {isLastQuestion ? (
+      {isFirstQuestion ? (
         <InputField
           type='text'
           value={mbti}
