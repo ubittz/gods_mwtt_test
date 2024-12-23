@@ -13,6 +13,7 @@ import { PAGES } from '@@router/constants';
 import { pathGenerator } from '@@router/utils';
 
 import QuestionContainer from './parts/QuestionContainer';
+import { checkResultType } from './utils';
 import { initialWineTest } from '../../assets/data/initialWineTest';
 
 const StyledWineTest = styled(FullScreen)`
@@ -92,8 +93,13 @@ const WineTest = () => {
         return answer?.answerValue || '';
       });
 
-      const result = answerValues.slice(0, 3).join('');
-      const testResultId = result === 'AAA' ? 'A' : result === 'BBB' ? 'B' : result === 'CCC' ? 'C' : 'D';
+      const acidity = answerValues[4] || '';
+      const body = answerValues[6] || '';
+      const sweetness = answerValues[7] || '';
+
+      const wineTestResult = acidity + body + sweetness;
+
+      const testResultId = checkResultType(wineTestResult);
 
       const queryString = `?result=${testResultId}`;
       navigate(pathGenerator(PAGES.MWTT_RESULT, queryString));
