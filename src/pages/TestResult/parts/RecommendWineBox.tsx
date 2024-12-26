@@ -13,7 +13,6 @@ interface RecommendWineBoxProps {
 
 const Container = styled.div`
   width: 192px;
-  cursor: pointer;
 `;
 
 const ImageBox = styled.div`
