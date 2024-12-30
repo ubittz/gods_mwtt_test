@@ -81,6 +81,7 @@ const WineTest = () => {
       newAnswers[currentStep - 1] = answerName;
       return newAnswers;
     });
+    console.log(selectedAnswerName);
   };
 
   const handleNext = () => {
@@ -93,9 +94,9 @@ const WineTest = () => {
         return answer?.answerValue || '';
       });
 
-      const acidity = answerValues[4] || '';
-      const body = answerValues[6] || '';
-      const sweetness = answerValues[7] || '';
+      const acidity = answerValues[3] || '';
+      const body = answerValues[5] || '';
+      const sweetness = answerValues[6] || '';
 
       const wineTestResult = acidity + body + sweetness;
 
