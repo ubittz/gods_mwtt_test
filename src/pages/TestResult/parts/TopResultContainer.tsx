@@ -82,7 +82,7 @@ const TopResultContainer = ({ testResultData }: TopResultContainerProps) => {
       <Flex.Vertical className='result__container'>
         <Typography.Headline3 className='result__type'>{testResultData.testResultType}</Typography.Headline3>
         <Typography.Headline1 className='result__title'>
-          {testResultData.testResultId.charAt(0)}. {testResultData.testResultName.split('타입')[0]}타입
+          {testResultData.testResultId}. {testResultData.testResultName.split('타입')[0]}타입
         </Typography.Headline1>
       </Flex.Vertical>
       <Flex.Horizontal className='taste__type__container'>

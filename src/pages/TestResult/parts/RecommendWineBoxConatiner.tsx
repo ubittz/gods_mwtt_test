@@ -51,7 +51,7 @@ const RecommendWineBoxContainer = ({ testResultData, productDataList }: Recommen
     <StyledRecommendWineBoxConatiner>
       <Flex.Vertical className='text__container'>
         <Typography.Subtitle1 className='title'>
-          {testResultData.testResultId.charAt(0)}. {testResultData.testResultName.split('타입')[0]}타입을 위한 추천 와인
+          {testResultData.testResultId}. {testResultData.testResultName.split('타입')[0]}타입을 위한 추천 와인
         </Typography.Subtitle1>
         <Typography.Body3 className='subtitle'>MWTT에서 어울리는 와인을 추천드려요</Typography.Body3>
       </Flex.Vertical>

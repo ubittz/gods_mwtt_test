@@ -29,7 +29,7 @@ export default function DescriptionContainer({ testResultData }: DescriptionCont
   return (
     <StyledDescriptionContainer>
       <Typography.Headline3 className='title'>
-        {testResultData.testResultId.charAt(0)}. {testResultData.testResultName.split('타입')[0]}타입은?
+        {testResultData.testResultId}. {testResultData.testResultName.split('타입')[0]}타입은?
       </Typography.Headline3>
       <Typography.Body3 className='description'>{testResultData.testResultDescript.split('[품종]')[0]}</Typography.Body3>
     </StyledDescriptionContainer>
