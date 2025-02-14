@@ -106,6 +106,7 @@ const QuestionSection = ({
       ) : isMbtiQuestion ? (
         <InputField
           type='text'
+          name='mbti'
           value={mbti}
           onChange={(e) => onMbtiChange(e.target.value.toUpperCase())}
           placeholder='MBTI를 입력해주세요 (예: ENFP)'

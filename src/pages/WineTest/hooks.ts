@@ -20,7 +20,7 @@ export const useSheetUpload = () => {
     ) => {
       try {
         await authenticate();
-        const formattedData = data.map((row) => [row.name, row.id, row.phoneNumber, row.testResult]).flat();
+        const formattedData = data.map((row) => [row.name, row.id, `'${row.phoneNumber}`, row.testResult]).flat();
         await uploadData(formattedData);
       } catch (error) {
         console.error('시트 업로드 중 오류:', error);

@@ -95,20 +95,26 @@ const WineTest = () => {
     const userData = {
       name: personalInfo.name,
       id: personalInfo.id,
-      phoneNumber: personalInfo.phoneNumber,
+      phoneNumber: `'${personalInfo.phoneNumber}`,
       testResult: testResultId,
+      mbti: mbti || 'Empty', // ✅ `mbti` 추가
     };
+
+    console.log('Uploading Data:', userData); // ✅ 업로드할 데이터 확인
 
     try {
       const response = await fetch('/api', {
-        // ✅ Vite 프록시 사용
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userData),
       });
 
+      if (!response.ok) {
+        throw new Error(`Server error: ${response.status}`);
+      }
+
       const result = await response.json();
-      console.log(result.message); // "유저 정보가 구글 시트에 정상적으로 업로드 되었습니다."
+      console.log(result.message);
     } catch (error) {
       console.error('Error uploading data:', error);
     }
