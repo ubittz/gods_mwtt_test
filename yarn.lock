@@ -2202,7 +2202,7 @@ available-typed-arrays@^1.0.7:
   dependencies:
     possible-typed-array-names "^1.0.0"
 
-axios@^1.7.9:
+axios@^1.7.7, axios@^1.7.9:
   version "1.7.9"
   resolved "https://registry.yarnpkg.com/axios/-/axios-1.7.9.tgz#d7d071380c132a24accda1b2cfc1535b79ec650a"
   integrity sha512-LhLcE7Hbiryz8oMDdDptSrWowmB4Bl6RCt6sIJKpRB4XtVf0iEgewX3au/pJqm+Py1kCASkb/FFKjxQaLtxJvw==
@@ -3342,6 +3342,14 @@ globrex@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/globrex/-/globrex-0.1.2.tgz#dd5d9ec826232730cd6793a5e33a9302985e6098"
   integrity sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==
+
+google-spreadsheet@^4.1.4:
+  version "4.1.4"
+  resolved "https://registry.yarnpkg.com/google-spreadsheet/-/google-spreadsheet-4.1.4.tgz#c52f3f65f05ba7d84b23d988e7b7100c369a0287"
+  integrity sha512-v6Bi7LIB/2E3+/XKmk11Qih2U0KpENSZuLSHOi8XoRDna/Tx8WYCZeEUTF60eucaELGLWC8GSepb0Cbkr3aXfg==
+  dependencies:
+    axios "^1.7.7"
+    lodash "^4.17.21"
 
 gopd@^1.0.1:
   version "1.0.1"

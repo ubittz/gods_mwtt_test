@@ -49,6 +49,14 @@ export default defineConfig(({ mode }) => {
     ],
     server: {
       port: 3000,
+      proxy: {
+        '/api': {
+          target: 'https://script.google.com/macros/s/AKfycbxy12c_GlM0yPv25igxElEB2VP9BeRsDiGEZGE0dluFdEZt8gN6Wzzg2EjujvvKI3Ma/exec',
+          changeOrigin: true,
+          secure: false,
+          rewrite: (path) => path.replace(/^\/api/, ''),
+        },
+      },
     },
   };
 });

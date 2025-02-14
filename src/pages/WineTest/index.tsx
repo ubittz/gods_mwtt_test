@@ -91,12 +91,32 @@ const WineTest = () => {
     console.log(selectedAnswerName);
   };
 
+  const handleSheetUpload = async (testResultId: string) => {
+    const userData = {
+      name: personalInfo.name,
+      id: personalInfo.id,
+      phoneNumber: personalInfo.phoneNumber,
+      testResult: testResultId,
+    };
+
+    try {
+      const response = await fetch('/api', {
+        // ✅ Vite 프록시 사용
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(userData),
+      });
+
+      const result = await response.json();
+      console.log(result.message); // "유저 정보가 구글 시트에 정상적으로 업로드 되었습니다."
+    } catch (error) {
+      console.error('Error uploading data:', error);
+    }
+  };
+
   const handleNext = () => {
     if (currentStep < initialWineTest.length) {
       setCurrentStep(currentStep + 1);
-      if (isFirstQuestion) {
-        console.log(personalInfo);
-      }
     } else {
       const answerValues = selectedAnswerName.map((name, index) => {
         const question = initialWineTest[index];
@@ -112,7 +132,9 @@ const WineTest = () => {
 
       const testResultId = checkResultType(wineTestResult);
 
+      // 구글 시트에 이름, 아이디, 연락처, 테스트 결과(TestResult) 업로드
       const queryString = `?result=${testResultId}`;
+      handleSheetUpload(testResultId);
       navigate(pathGenerator(PAGES.MWTT_RESULT, queryString));
     }
   };

@@ -80,12 +80,14 @@ const QuestionSection = ({
         <Flex.Vertical>
           <InputField
             type='text'
+            name='Name'
             value={personalInfo.name}
             onChange={(e) => onPersonalInfoChange({ ...personalInfo, name: e.target.value })}
             placeholder='이름을 입력해주세요 (예: 홍길동)'
           />
           <InputField
             type='text'
+            name='Id'
             value={personalInfo.id}
             onChange={(e) => onPersonalInfoChange({ ...personalInfo, id: e.target.value })}
             placeholder='아이디를 입력해주세요'
@@ -93,6 +95,7 @@ const QuestionSection = ({
           />
           <InputField
             type='number'
+            name='Phone'
             value={personalInfo.phoneNumber}
             onChange={(e) => onPersonalInfoChange({ ...personalInfo, phoneNumber: e.target.value })}
             placeholder='연락처를 입력해주세요 (예: 01012345678)'
