@@ -4,7 +4,7 @@ import Flex from '@@components/Flex';
 import Typography from '@@components/Typography';
 import { COLORS } from '@@constants/colors';
 
-import { StepAnswerType } from '../types';
+import { PersonalInfoType, StepAnswerType } from '../types';
 
 const StyledQuestionContainer = styled.div`
   margin-top: 56px;
@@ -49,19 +49,25 @@ interface QuestionContainerProps {
     stepAnswerList: StepAnswerType[];
   };
   isFirstQuestion: boolean;
+  isMbtiQuestion: boolean;
   mbti: string;
+  personalInfo: PersonalInfoType;
   selectedAnswerName: string[];
   onMbtiChange: (value: string) => void;
   onAnswerClick: (answerName: string) => void;
+  onPersonalInfoChange: (value: PersonalInfoType) => void;
 }
 
 const QuestionSection = ({
   currentStep,
   currentQuestion,
+  isMbtiQuestion,
   isFirstQuestion,
   mbti,
+  personalInfo,
   selectedAnswerName,
   onMbtiChange,
+  onPersonalInfoChange,
   onAnswerClick,
 }: QuestionContainerProps) => {
   return (
@@ -71,6 +77,30 @@ const QuestionSection = ({
         {currentQuestion.stepQuestion}
       </Typography.Headline2>
       {isFirstQuestion ? (
+        <Flex.Vertical>
+          <InputField
+            type='text'
+            value={personalInfo.name}
+            onChange={(e) => onPersonalInfoChange({ ...personalInfo, name: e.target.value })}
+            placeholder='이름을 입력해주세요 (예: 홍길동)'
+          />
+          <InputField
+            type='text'
+            value={personalInfo.id}
+            onChange={(e) => onPersonalInfoChange({ ...personalInfo, id: e.target.value })}
+            placeholder='아이디를 입력해주세요'
+            minLength={6}
+          />
+          <InputField
+            type='number'
+            value={personalInfo.phoneNumber}
+            onChange={(e) => onPersonalInfoChange({ ...personalInfo, phoneNumber: e.target.value })}
+            placeholder='연락처를 입력해주세요 (예: 01012345678)'
+            maxLength={11}
+            minLength={11}
+          />
+        </Flex.Vertical>
+      ) : isMbtiQuestion ? (
         <InputField
           type='text'
           value={mbti}

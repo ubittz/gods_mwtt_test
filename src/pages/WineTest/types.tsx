@@ -3,3 +3,9 @@ export interface StepAnswerType {
   answerValue: string;
   isChecked: boolean;
 }
+
+export interface PersonalInfoType {
+  id: string;
+  name: string;
+  phoneNumber: string;
+}

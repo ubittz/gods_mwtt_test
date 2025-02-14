@@ -13,6 +13,7 @@ import { PAGES } from '@@router/constants';
 import { pathGenerator } from '@@router/utils';
 
 import QuestionContainer from './parts/QuestionContainer';
+import { PersonalInfoType } from './types';
 import { checkResultType } from './utils';
 import { initialWineTest } from '../../assets/data/initialWineTest';
 
@@ -61,11 +62,17 @@ const WineTest = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedAnswerName, setSelectedAnswerName] = useState<string[]>([]);
   const [mbti, setMbti] = useState('');
+  const [personalInfo, setPersonalInfo] = useState<PersonalInfoType>({
+    name: '',
+    id: '',
+    phoneNumber: '',
+  });
   const navigate = useNavigate();
 
   const currentQuestion = initialWineTest.find((q) => q.stepNumber === currentStep);
   const isLastQuestion = currentStep === initialWineTest.length;
   const isFirstQuestion = currentStep === 1;
+  const isMbtiQuestion = currentStep === 2;
 
   const handleBack = () => {
     if (!isFirstQuestion) {
@@ -87,6 +94,9 @@ const WineTest = () => {
   const handleNext = () => {
     if (currentStep < initialWineTest.length) {
       setCurrentStep(currentStep + 1);
+      if (isFirstQuestion) {
+        console.log(personalInfo);
+      }
     } else {
       const answerValues = selectedAnswerName.map((name, index) => {
         const question = initialWineTest[index];
@@ -94,9 +104,9 @@ const WineTest = () => {
         return answer?.answerValue || '';
       });
 
-      const acidity = answerValues[3] || '';
-      const body = answerValues[5] || '';
-      const sweetness = answerValues[6] || '';
+      const acidity = answerValues[4] || '';
+      const body = answerValues[6] || '';
+      const sweetness = answerValues[7] || '';
 
       const wineTestResult = acidity + body + sweetness;
 
@@ -127,16 +137,32 @@ const WineTest = () => {
             currentStep={currentStep}
             currentQuestion={currentQuestion}
             isFirstQuestion={isFirstQuestion}
+            isMbtiQuestion={isMbtiQuestion}
             mbti={mbti}
+            personalInfo={personalInfo}
             selectedAnswerName={selectedAnswerName}
             onMbtiChange={setMbti}
             onAnswerClick={handleAnswerClick}
+            onPersonalInfoChange={setPersonalInfo}
           />
         )}
       </Flex.Vertical>
 
       <FixedBottomButton>
-        <FullWidthButton onClick={handleNext} disabled={isFirstQuestion ? !mbti || mbti.length !== 4 : !selectedAnswerName[currentStep - 1]}>
+        <FullWidthButton
+          onClick={handleNext}
+          disabled={
+            isFirstQuestion
+              ? !personalInfo.name ||
+                !personalInfo.id ||
+                personalInfo.id.length < 6 ||
+                !personalInfo.phoneNumber ||
+                personalInfo.phoneNumber.length !== 11
+              : isMbtiQuestion
+                ? !mbti || mbti.length !== 4
+                : !selectedAnswerName[currentStep - 1]
+          }
+        >
           {!isLastQuestion ? '다음' : '완료'}
         </FullWidthButton>
       </FixedBottomButton>

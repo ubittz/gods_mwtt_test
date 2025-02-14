@@ -54,6 +54,8 @@ const TestResultPage = () => {
   const testResultData = testResultDataJson.find((data) => data.testResultId === resultId);
   const productDataList = productDataJson.filter((data) => data.testResultId === resultId);
 
+  // testResultData 구글 스프레드 시트에 업로드하기
+
   const handleBackButton = () => {
     navigate(-1);
   };
