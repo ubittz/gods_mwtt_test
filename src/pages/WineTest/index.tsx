@@ -18,6 +18,8 @@ import { PersonalInfoType } from './types';
 import { checkResultType } from './utils';
 import { initialWineTest } from '../../assets/data/initialWineTest';
 
+const GOOGLE_SHEET_API_URL = import.meta.env.VITE_GOOGLE_SHEET_API_URL;
+
 const StyledWineTest = styled(FullScreen)`
   width: 100%;
   margin: 0 auto;
@@ -108,8 +110,9 @@ const WineTest = () => {
     console.log('Uploading Data:', userData); // ✅ 업로드할 데이터 확인
 
     try {
-      const response = await fetch('/api', {
+      const response = await fetch(GOOGLE_SHEET_API_URL, {
         method: 'POST',
+        mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userData),
       });
