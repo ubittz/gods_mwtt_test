@@ -94,7 +94,7 @@ const QuestionSection = ({
             minLength={6}
           />
           <InputField
-            type='number'
+            type='text'
             name='Phone'
             value={personalInfo.phoneNumber}
             onChange={(e) => onPersonalInfoChange({ ...personalInfo, phoneNumber: e.target.value })}
