@@ -11,6 +11,7 @@ import Typography from '@@components/Typography';
 import { COLORS } from '@@constants/colors';
 import { PAGES } from '@@router/constants';
 import { pathGenerator } from '@@router/utils';
+import useStore from '@@store/store';
 
 import QuestionContainer from './parts/QuestionContainer';
 import { PersonalInfoType } from './types';
@@ -59,6 +60,8 @@ const FullWidthButton = styled(Button.XLarge)`
 `;
 
 const WineTest = () => {
+  const { testResultData: testResultDataJson } = useStore();
+
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedAnswerName, setSelectedAnswerName] = useState<string[]>([]);
   const [mbti, setMbti] = useState('');
@@ -92,11 +95,13 @@ const WineTest = () => {
   };
 
   const handleSheetUpload = async (testResultId: string) => {
+    const testResultData = testResultDataJson.find((data) => data.testResultId === testResultId);
+
     const userData = {
       name: personalInfo.name,
       id: personalInfo.id,
       phoneNumber: `'${personalInfo.phoneNumber}`,
-      testResult: testResultId,
+      testResult: `${testResultId}. ${testResultData?.testResultName}`,
       mbti: mbti || 'Empty', // ✅ `mbti` 추가
     };
 
