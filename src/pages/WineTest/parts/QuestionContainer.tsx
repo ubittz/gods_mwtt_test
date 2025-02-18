@@ -1,8 +1,11 @@
+import { useRef } from 'react';
+
 import styled from 'styled-components';
 
 import Flex from '@@components/Flex';
 import Typography from '@@components/Typography';
 import { COLORS } from '@@constants/colors';
+import { useKeyboardAdjust } from '@@hooks/useKeyboardAdjust';
 
 import { PersonalInfoType, StepAnswerType } from '../types';
 
@@ -70,8 +73,12 @@ const QuestionSection = ({
   onPersonalInfoChange,
   onAnswerClick,
 }: QuestionContainerProps) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  useKeyboardAdjust(containerRef, inputRef, isFirstQuestion);
+
   return (
-    <StyledQuestionContainer>
+    <StyledQuestionContainer ref={containerRef}>
       <Typography.Headline2 className='question__title'>
         Q{currentStep}.<br />
         {currentQuestion.stepQuestion}
@@ -79,6 +86,7 @@ const QuestionSection = ({
       {isFirstQuestion ? (
         <Flex.Vertical>
           <InputField
+            ref={inputRef}
             type='text'
             name='Name'
             value={personalInfo.name}
@@ -86,6 +94,7 @@ const QuestionSection = ({
             placeholder='이름을 입력해주세요 (예: 홍길동)'
           />
           <InputField
+            ref={inputRef}
             type='text'
             name='Id'
             value={personalInfo.id}
@@ -94,6 +103,7 @@ const QuestionSection = ({
             minLength={6}
           />
           <InputField
+            ref={inputRef}
             type='text'
             name='Phone'
             value={personalInfo.phoneNumber}

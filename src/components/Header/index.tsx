@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
+import Flex from '@@components/Flex';
 import { ATTR_BY_HEADER_ALIGN } from '@@components/Header/constants';
+import { ProgressBarContainer, ProgressBar } from '@@components/Header/parts/ProgressBar';
 import { HeaderAlignment, HeaderProps } from '@@components/Header/types';
 import { COLORS } from '@@constants/colors';
 import { ArrowLeftIcon } from '@@constants/icons';
@@ -50,21 +52,38 @@ const StyledHeader = styled.div<{
   }
 `;
 
-function Header({ children, titleAlign = 'center', hiddenBack = false, onBack, rightIcon, onRightIconClick, className, ...props }: HeaderProps) {
+function Header({
+  children,
+  titleAlign = 'center',
+  hiddenBack = false,
+  onBack,
+  rightIcon,
+  onRightIconClick,
+  className,
+  progress,
+  ...props
+}: HeaderProps) {
   return (
-    <StyledHeader {...props} className={`header ${className ?? ''}`} $hiddenBack={hiddenBack} $align={titleAlign}>
-      {!hiddenBack && (
-        <div className='header__back_icon_wrap' onClick={onBack}>
-          <ArrowLeftIcon />
-        </div>
+    <Flex.Vertical>
+      <StyledHeader {...props} className={`header ${className ?? ''}`} $hiddenBack={hiddenBack} $align={titleAlign}>
+        {!hiddenBack && (
+          <div className='header__back_icon_wrap' onClick={onBack}>
+            <ArrowLeftIcon />
+          </div>
+        )}
+        {children && <div className='header__title'>{children}</div>}
+        {rightIcon && (
+          <div className='header__right_icon_wrap' onClick={onRightIconClick}>
+            {rightIcon}
+          </div>
+        )}
+      </StyledHeader>
+      {progress && (
+        <ProgressBarContainer>
+          <ProgressBar progress={progress} />
+        </ProgressBarContainer>
       )}
-      {children && <div className='header__title'>{children}</div>}
-      {rightIcon && (
-        <div className='header__right_icon_wrap' onClick={onRightIconClick}>
-          {rightIcon}
-        </div>
-      )}
-    </StyledHeader>
+    </Flex.Vertical>
   );
 }
 

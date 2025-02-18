@@ -9,6 +9,7 @@ export interface HeaderProps extends HTMLAttributes<HTMLDivElement> {
   rightIcon?: React.ReactNode;
   onRightIconClick?: MouseEventHandler<HTMLDivElement>;
   onBack?: MouseEventHandler<HTMLDivElement>;
+  progress?: number;
 }
 
 export type HeaderAlignment = asType<typeof HEADER_ALIGNMENT>;

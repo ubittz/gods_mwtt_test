@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
@@ -8,7 +8,6 @@ import Flex from '@@components/Flex';
 import FullScreen from '@@components/FullScreen';
 import Header from '@@components/Header';
 import Typography from '@@components/Typography';
-import { COLORS } from '@@constants/colors';
 import { PAGES } from '@@router/constants';
 import { pathGenerator } from '@@router/utils';
 import useStore from '@@store/store';
@@ -33,19 +32,6 @@ const StyledWineTest = styled(FullScreen)`
     overflow-y: auto;
     padding: 0 16px;
   }
-`;
-
-const ProgressBarContainer = styled.div`
-  width: 100%;
-  height: 4px;
-  background-color: ${COLORS.GRAY_SCALE_100};
-`;
-
-const ProgressBar = styled.div<{ progress: number }>`
-  width: ${({ progress }) => `${progress}%`};
-  height: 100%;
-  background-color: ${COLORS.WINE_800};
-  transition: width 0.3s ease;
 `;
 
 const FixedBottomButton = styled.div`
@@ -155,17 +141,26 @@ const WineTest = () => {
 
   const progress = (currentStep / initialWineTest.length) * 100;
 
+  useEffect(() => {
+    // 모바일 브라우저의 viewport 높이 문제 해결
+    const setVh = () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    };
+
+    setVh();
+    window.addEventListener('resize', setVh);
+
+    return () => window.removeEventListener('resize', setVh);
+  }, []);
+
   return (
     <StyledWineTest>
-      <Header className='header' onBack={handleBack}>
+      <Header className='header' onBack={handleBack} progress={progress}>
         <Typography.Subtitle1>
           {currentStep}/{initialWineTest.length}
         </Typography.Subtitle1>
       </Header>
-
-      <ProgressBarContainer>
-        <ProgressBar progress={progress} />
-      </ProgressBarContainer>
 
       <Flex.Vertical className='body'>
         {currentQuestion && (
