@@ -25,7 +25,7 @@ export const theme: DefaultTheme = {
       [BUTTON_THEME.SOFT]: `background: ${COLORS.WINE_100}; border: none; color: ${COLORS.WINE_800}`,
       [BUTTON_THEME.OUTLINE]: `background: transparent; border: 1px solid ${COLORS.GRAY_SCALE_200}; color: ${COLORS.GRAY_SCALE_800}`,
       [BUTTON_THEME.GRAY]: `background: ${COLORS.GRAY_SCALE_050}; border: none; color: ${COLORS.GRAY_SCALE_700}`,
-      [BUTTON_THEME.DISABLE]: `background: ${COLORS.GRAY_SCALE_200}; border: none; color: ${COLORS.GRAY_SCALE_300}`,
+      [BUTTON_THEME.DISABLE]: `background: ${COLORS.GRAY_SCALE_200}; border: none; color: ${COLORS.GRAY_SCALE_300} cursor: not-allowed;`,
     },
   },
   typography: {

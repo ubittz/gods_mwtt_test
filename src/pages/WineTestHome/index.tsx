@@ -51,7 +51,7 @@ const ButtonContainer = styled.div`
 const WineTestHome = () => {
   const navigate = useNavigate();
   const handleStartTest = () => {
-    navigate(pathGenerator(PAGES.MWTT_TEST));
+    navigate(pathGenerator(PAGES.MWTT_TEST_INTRO));
   };
 
   return (

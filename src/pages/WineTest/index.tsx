@@ -69,7 +69,7 @@ const WineTest = () => {
     if (!isFirstQuestion) {
       setCurrentStep(currentStep - 1);
     } else {
-      navigate(-1);
+      navigate(pathGenerator(PAGES.MWTT_HOME));
     }
   };
 
@@ -79,6 +79,7 @@ const WineTest = () => {
       newAnswers[currentStep - 1] = answerName;
       return newAnswers;
     });
+
     console.log(selectedAnswerName);
   };
 
@@ -90,7 +91,15 @@ const WineTest = () => {
       id: personalInfo.id,
       phoneNumber: `'${personalInfo.phoneNumber}`,
       testResult: `${testResultId}. ${testResultData?.testResultName}`,
-      mbti: mbti || 'Empty', // ✅ `mbti` 추가
+      mbti: mbti || 'Empty',
+      // 추가 정보
+      taste: selectedAnswerName[2],
+      scent: selectedAnswerName[3],
+      coffee: selectedAnswerName[4],
+      kimchi: selectedAnswerName[5],
+      blackTea: selectedAnswerName[6],
+      chocolate: selectedAnswerName[7],
+      food: selectedAnswerName[8],
     };
 
     console.log('Uploading Data:', userData); // ✅ 업로드할 데이터 확인
