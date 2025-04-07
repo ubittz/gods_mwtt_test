@@ -61,7 +61,7 @@ const TestResultPage = () => {
   };
 
   const handleReservationButton = () => {
-    alert('큐레이션 예약하기');
+    window.open('https://godsmwtt55454.imweb.me/Reservation-list', '_blank');
   };
 
   const handleRetryButton = () => {
