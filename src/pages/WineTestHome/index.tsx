@@ -55,7 +55,7 @@ const WineTestHome = () => {
   };
 
   const handleBack = () => {
-    window.open('https://godsmwtt.com/', '_blank');
+    window.history.back();
   };
 
   return (
