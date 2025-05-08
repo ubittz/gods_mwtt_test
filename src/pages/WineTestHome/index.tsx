@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import Button from '@@components/Button';
 import Flex from '@@components/Flex';
 import FullScreen from '@@components/FullScreen';
-import Header from '@@components/Header';
 import Typography from '@@components/Typography';
 import { COLORS } from '@@constants/colors';
+import Header from '@@pages/WineTestHome/parts/Header';
 import { PAGES } from '@@router/constants';
 import { pathGenerator } from '@@router/utils';
 
@@ -50,17 +50,14 @@ const ButtonContainer = styled.div`
 
 const WineTestHome = () => {
   const navigate = useNavigate();
+
   const handleStartTest = () => {
     navigate(pathGenerator(PAGES.MWTT_TEST_INTRO));
   };
 
-  const handleBack = () => {
-    window.history.back();
-  };
-
   return (
     <StyledWineTestHome>
-      <Header onBack={handleBack}>
+      <Header>
         <Typography.Subtitle1>MWTT 테스트</Typography.Subtitle1>
       </Header>
       <Flex.Vertical className='body'>
