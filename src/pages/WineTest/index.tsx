@@ -102,8 +102,6 @@ const WineTest = () => {
       food: selectedAnswerName[8],
     };
 
-    console.log('Uploading Data:', userData); // ✅ 업로드할 데이터 확인
-
     try {
       const response = await fetch(GOOGLE_SHEET_API_URL, {
         method: 'POST',

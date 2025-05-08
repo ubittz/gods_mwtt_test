@@ -54,9 +54,13 @@ const WineTestHome = () => {
     navigate(pathGenerator(PAGES.MWTT_TEST_INTRO));
   };
 
+  const handleBack = () => {
+    window.open('https://godsmwtt.com/', '_blank');
+  };
+
   return (
     <StyledWineTestHome>
-      <Header hiddenBack>
+      <Header onBack={handleBack}>
         <Typography.Subtitle1>MWTT 테스트</Typography.Subtitle1>
       </Header>
       <Flex.Vertical className='body'>
