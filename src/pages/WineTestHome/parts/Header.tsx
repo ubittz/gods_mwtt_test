@@ -55,14 +55,7 @@ const StyledHeader = styled.div<{
 function Header({ children, titleAlign = 'center', hiddenBack = false, rightIcon, onRightIconClick, className, progress, ...props }: HeaderProps) {
   const handleAppLink = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    const appUrl = 'imweb://';
-    const storeUrl = 'https://play.google.com/store/apps/details?id=com.imweb.appS202411131eba81f70bd48_119f5061f8078';
-
-    window.location.href = appUrl;
-
-    setTimeout(() => {
-      window.location.href = storeUrl;
-    }, 2000);
+    window.open('https://godsmwtt55454.imweb.me/', '_blank', 'toolbar=no,location=no,status=no,menubar=no');
   };
 
   return (
