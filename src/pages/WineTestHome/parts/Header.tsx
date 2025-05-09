@@ -55,8 +55,7 @@ const StyledHeader = styled.div<{
 function Header({ children, titleAlign = 'center', hiddenBack = false, rightIcon, onRightIconClick, className, progress, ...props }: HeaderProps) {
   const handleAppLink = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    window.close();
-    // window.open('https://godsmwtt55454.imweb.me/', '_blank', 'toolbar=no,location=no,status=no,menubar=no');
+    window.open('https://godsmwtt55454.imweb.me/', '_blank', 'toolbar=no,location=no,status=no,menubar=no');
   };
 
   return (
